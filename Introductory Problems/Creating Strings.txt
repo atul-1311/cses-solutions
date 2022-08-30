@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void solve(string s, int index, map<string,int> &mp, int &count){
+      if(index>=s.length()){
+            if(mp[s]==0){
+                  count++;
+                  mp[s]++;
+            }
+            return;
+      }
+      
+      for(int i=index; i<s.length(); i++){
+            swap(s[i],s[index]);
+            solve(s,index+1,mp,count);
+            swap(s[i],s[index]);
+      }
+}
+
+int main(){
+      string s;
+      cin>>s;
+      // string str="";
+      map<string,int> mp;
+      int count=0;
+      solve(s,0,mp,count);
+      cout<<count<<endl;
+      for(auto i:mp){
+            cout<<i.first<<endl;
+      }
+}

@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+      int n,x,ans=0;
+      cin>>n>>x;
+      vector<int> arr(n);
+      vector<bool> visited(n, false);
+      for(int i=0;i<n;i++){
+            cin>>arr[i];
+      }
+      sort(arr.begin(),arr.end());
+      
+      int i=0,e=n-1;
+      while(i<e){
+            if(arr[i]+arr[e]<=x){
+                  visited[i]=visited[e]=true;
+                  ans++;
+                  i++;e--;
+            }else{
+                  e--;
+            }
+      }
+      for(int i=0;i<n;i++){
+            if(!visited[i])
+            ans++;
+      }
+      cout<<ans;
+}
